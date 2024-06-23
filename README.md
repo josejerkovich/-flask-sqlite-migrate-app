@@ -1,2 +1,3 @@
-# -flask-sqlite-migrate-app
-Rest API using Flask+Sqlite
+# Flask SQLite Migrate App
+
+This Flask application manages departments, jobs, and hired employees using SQLite
