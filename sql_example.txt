@@ -1,0 +1,21 @@
+SELECT
+    department.department,
+    job.job,
+    CASE
+        WHEN strftime('%m', hired_employee.datetime) IN ('01', '02', '03') THEN 'Q1'
+        WHEN strftime('%m', hired_employee.datetime) IN ('04', '05', '06') THEN 'Q2'
+        WHEN strftime('%m', hired_employee.datetime) IN ('07', '08', '09') THEN 'Q3'
+        WHEN strftime('%m', hired_employee.datetime) IN ('10', '11', '12') THEN 'Q4'
+    END AS quarter
+FROM
+    hired_employee
+JOIN
+    department ON hired_employee.department_id = department.id
+JOIN
+    job ON hired_employee.job_id = job.id
+WHERE
+    strftime('%Y', hired_employee.datetime) = '2021'
+    AND department.department = 'Business Development'
+    AND job.job = 'Accountant IV';
+--"department": "Business Development",
+--        "job": "Accountant IV"
